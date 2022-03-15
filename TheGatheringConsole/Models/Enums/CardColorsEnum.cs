@@ -5,6 +5,7 @@
         Red,
         Blue,
         Brown,
-        White
+        White,
+        Green
     }
 }
