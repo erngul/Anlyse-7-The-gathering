@@ -2,7 +2,9 @@
 {
     public class LandCard: Card
     {
-        public string sucuk { get; set; }
-
+        public int EnergyGeneration { get; set; }
+        public int EnergAvailable { get; set; }
+        public int CardTurnedAtRound { get; set; }
+        public int AmountEnergyCost { get; set; }
     }
 }
