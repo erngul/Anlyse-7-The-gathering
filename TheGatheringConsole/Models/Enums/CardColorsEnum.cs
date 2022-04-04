@@ -2,10 +2,10 @@
 {
     public enum CardColorsEnum
     {
-        Red,
-        Blue,
-        Brown,
-        White,
-        Green
+        Red = 1,
+        Blue = 2,
+        Brown = 3,
+        White = 4,
+        Green = 5
     }
 }
