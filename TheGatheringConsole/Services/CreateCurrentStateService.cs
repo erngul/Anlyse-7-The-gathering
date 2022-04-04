@@ -18,11 +18,11 @@ namespace TheGatheringConsole.Services
         public Game CreateGameState()
         {
             Game result = new Game();
-            result.Players[0] = CreatePlayerState();
-            result.Players[1] = CreatePlayerState();
+            result.Players[0] = CreatePlayerState(1);
+            result.Players[1] = CreatePlayerState(2);
             return result;
         }
-        public Player CreatePlayerState()
+        public Player CreatePlayerState(int playerNumber)
         {
             Player result = new Player();
             result.Deck = GenerateDeck();
@@ -42,6 +42,7 @@ namespace TheGatheringConsole.Services
                 { CardColorsEnum.Green, 0 }
             };
             result.FloorCards = new List<Card>();
+            result.PlayerNumber = playerNumber;
             return result;
         }
 

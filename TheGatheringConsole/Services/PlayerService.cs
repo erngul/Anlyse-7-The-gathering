@@ -8,12 +8,18 @@ namespace TheGatheringConsole.Services
     {
         public Boolean CheckPlayerPlayable(Player player)
         {
-            if (player.Deck.Count > 0 && player.Life > 0)
+            if (player.Deck.Count <= 0 )
             {
-                return false;
+                Console.WriteLine($"Player {player.PlayerNumber} has no cards left in his deck. He lost.");
+                return true;
+            }
+            if ( player.Life <= 0)
+            {
+                Console.WriteLine($"Player {player.PlayerNumber} has no more life left. He lost");
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         public void CheckHand(Player player)
@@ -54,6 +60,11 @@ namespace TheGatheringConsole.Services
             }
         }
 
+        public void CheckDeck(Player player)
+        {
+            
+        }
+
         public void DrawCard(Player player)
         {
             var card = player.Deck.Pop();
@@ -65,14 +76,13 @@ namespace TheGatheringConsole.Services
             else if (card is Creature)
             {
                 var creature = (Creature)card;
-                Console.WriteLine($"A {card.Color} Creature has been drawn with {card.EffectsType} and with {creature.Attack}/{creature.Defence} attack/defence");
+                Console.WriteLine($"A {card.Color} Creature has been drawn with {creature.SpellEffect} and with {creature.Attack}/{creature.Defence} attack/defence.");
             }
             else if (card is SpellCard)
             {
-                Console.WriteLine($"A {card.Color} SpellCard has been drawn");
+                var spellCard = (SpellCard)card;
+                Console.WriteLine($"A {card.Color} SpellCard has been drawn with {spellCard.SpellEffect}.");
             }
-
-            Console.WriteLine($"");
         }
 
         public void PlaceLandCards(Player player)
@@ -91,7 +101,7 @@ namespace TheGatheringConsole.Services
             }
         }
 
-        public void UseSpellOrCreatureCards(Player player)
+        public void SummonSpellOrCreatureCards(Player player)
         {
             for (int i = 0; i < player.HandCards.Count; i++)
             {
@@ -108,7 +118,7 @@ namespace TheGatheringConsole.Services
                     var spellCard = (SpellCard)card;
                     player.FloorCards.Add(spellCard);
                     player.HandCards.RemoveAt(i);
-                    Console.WriteLine($"A {spellCard.Color} creature has been summoned to the floor");
+                    Console.WriteLine($"A {spellCard.Color} spellcard has been summoned to the floor");
                 }
             }
         }

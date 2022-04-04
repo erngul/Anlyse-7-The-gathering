@@ -11,5 +11,6 @@ namespace TheGatheringConsole.Models
         public Dictionary<CardColorsEnum, int> EnergyReserve { get; set; }
         public List<Card> DiscardPile { get; set; }
         public List<Card> FloorCards { get; set; }
+        public int PlayerNumber { get; set; }
     }
 }

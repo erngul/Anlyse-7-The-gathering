@@ -6,7 +6,5 @@ namespace TheGatheringConsole.Models
     {
         public int Attack { get; set; }
         public int Defence { get; set; }
-        public override SpellEfectEnum SpellEffect { get; set; }
-        // SpellEfectEnum SpellEffect { get; set; }
     }
 }
