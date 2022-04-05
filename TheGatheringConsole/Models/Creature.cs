@@ -6,5 +6,6 @@ namespace TheGatheringConsole.Models
     {
         public int Attack { get; set; }
         public int Defence { get; set; }
+        public CreatureStateEnum CreatureState { get; set; }
     }
 }

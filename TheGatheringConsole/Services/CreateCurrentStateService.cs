@@ -20,6 +20,7 @@ namespace TheGatheringConsole.Services
             Game result = new Game();
             result.Players[0] = CreatePlayerState(1);
             result.Players[1] = CreatePlayerState(2);
+            result.SpellStack = new Stack<(SpellCard, Player)>();
             return result;
         }
         public Player CreatePlayerState(int playerNumber)
@@ -63,6 +64,12 @@ namespace TheGatheringConsole.Services
                         SpellCost = rnd.Next(0, 4),
                         SpellEffect = RandomEnumValue<SpellEfectEnum>(),
                     };
+                    if (spellCard.SpellEffect == SpellEfectEnum.AddDefence ||
+                        spellCard.SpellEffect == SpellEfectEnum.AddAttackDamage ||
+                        spellCard.SpellEffect == SpellEfectEnum.AddAttackDamageAndShield)
+                    {
+                        spellCard.EffectValue = rnd.Next(0, 4);
+                    }
                     spellCard.Hash = spellCard.GetHashCode();
                     var sameCards = result.Where(c => c.Hash == spellCard.Hash).ToList();
                     if (sameCards.Count <= 3)

@@ -23,18 +23,20 @@ namespace TheGatheringConsole
                 foreach (var player  in game.Players)
                 {
                     Console.WriteLine($"Player {player.PlayerNumber} is playing.");
+                    playerService.PlaySpellStack(player, game);
                     if (playerService.CheckPlayerPlayable(player))
                     {
                         gameNotOver = false;
                         break;
                     }
-                    
                     playerService.CheckHand(player);
                     playerService.CheckFloorCards(player);
                     playerService.DrawCard(player);
                     playerService.PlaceLandCards(player, game.Turn);
-                    playerService.SummonSpellOrCreatureCards(player, game.Turn);
-                    playerService.
+                    playerService.SummonCreatureCards(player, game);
+                    playerService.UseCreatureCards(player, game);
+                    playerService.SummonSpellCards(player, game);
+                    playerService.PutLandCardEnergyToReserve(player);
                     Console.WriteLine("");
 
                 }
