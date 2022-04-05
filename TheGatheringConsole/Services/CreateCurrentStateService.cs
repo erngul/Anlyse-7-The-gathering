@@ -33,14 +33,15 @@ namespace TheGatheringConsole.Services
             }
 
             result.DiscardPile = new List<Card>();
-            result.EnergyReserve = new Dictionary<CardColorsEnum, int>()
-            {
-                { CardColorsEnum.Red, 0 },
-                { CardColorsEnum.Blue, 0 },
-                { CardColorsEnum.Brown, 0 },
-                { CardColorsEnum.White, 0 },
-                { CardColorsEnum.Green, 0 }
-            };
+            // result.EnergyReserve = new Dictionary<CardColorsEnum, int>()
+            // {
+            //     { CardColorsEnum.Red, 0 },
+            //     { CardColorsEnum.Blue, 0 },
+            //     { CardColorsEnum.Brown, 0 },
+            //     { CardColorsEnum.White, 0 },
+            //     { CardColorsEnum.Green, 0 }
+            // };
+            result.EnergyReserve = 0;
             result.FloorCards = new List<Card>();
             result.PlayerNumber = playerNumber;
             return result;

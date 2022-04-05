@@ -32,9 +32,9 @@ namespace TheGatheringConsole
                     playerService.CheckHand(player);
                     playerService.CheckFloorCards(player);
                     playerService.DrawCard(player);
-                    playerService.PlaceLandCards(player);
-                    playerService.SummonSpellOrCreatureCards(player);
-                    
+                    playerService.PlaceLandCards(player, game.Turn);
+                    playerService.SummonSpellOrCreatureCards(player, game.Turn);
+                    playerService.
                     Console.WriteLine("");
 
                 }

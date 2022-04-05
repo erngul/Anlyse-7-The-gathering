@@ -9,6 +9,7 @@ namespace TheGatheringConsole.Models
         public CardColorsEnum Color { get; set; }
         public CardEffectsTypeEnum EffectsType { get; set; }
         public int Hash { get; set; }
+        public int SummonedInTurn { get; set; }
 
     }
 }

@@ -8,7 +8,8 @@ namespace TheGatheringConsole.Models
         public Stack<Card> Deck { get; set; }
         public List<Card> HandCards { get; set; }
         public int Life = 10;
-        public Dictionary<CardColorsEnum, int> EnergyReserve { get; set; }
+        public int EnergyReserve { get; set; }
+        // public Dictionary<CardColorsEnum, int> EnergyReserve { get; set; }
         public List<Card> DiscardPile { get; set; }
         public List<Card> FloorCards { get; set; }
         public int PlayerNumber { get; set; }

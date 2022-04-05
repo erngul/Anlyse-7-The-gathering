@@ -85,7 +85,7 @@ namespace TheGatheringConsole.Services
             }
         }
 
-        public void PlaceLandCards(Player player)
+        public void PlaceLandCards(Player player, int turn)
         {
             for (int i = 0; i < player.HandCards.Count; i++)
             {
@@ -93,6 +93,7 @@ namespace TheGatheringConsole.Services
                 if (card is LandCard)
                 {
                     var landCard = (LandCard)card;
+                    landCard.SummonedInTurn = turn;
                     landCard.EnergyUsedInRound = true;
                     player.FloorCards.Add(landCard);
                     player.HandCards.RemoveAt(i);
@@ -100,8 +101,11 @@ namespace TheGatheringConsole.Services
                 }
             }
         }
-
-        public void SummonSpellOrCreatureCards(Player player)
+        public int CountEnergy(Player player)
+        {
+            
+        }
+        public void SummonSpellOrCreatureCards(Player player, int turn)
         {
             for (int i = 0; i < player.HandCards.Count; i++)
             {
@@ -109,6 +113,11 @@ namespace TheGatheringConsole.Services
                 if (card is Creature)
                 {
                     var creature = (Creature)card;
+                    foreach (var VARIABLE in COLLECTION)
+                    {
+                        
+                    }
+                    creature.SummonedInTurn = turn;
                     player.FloorCards.Add(creature);
                     player.HandCards.RemoveAt(i);
                     Console.WriteLine($"A {creature.Color} creature with {creature.Attack}/{creature.Defence}(attack/defence) creature has been summoned to the floor");
@@ -116,6 +125,7 @@ namespace TheGatheringConsole.Services
                 else if (card is SpellCard)
                 {
                     var spellCard = (SpellCard)card;
+                    spellCard.SummonedInTurn = turn;
                     player.FloorCards.Add(spellCard);
                     player.HandCards.RemoveAt(i);
                     Console.WriteLine($"A {spellCard.Color} spellcard has been summoned to the floor");

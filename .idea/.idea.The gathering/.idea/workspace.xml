@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/Creature.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/Creature.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/Card.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/SpellCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/SpellCard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Services/CreateCurrentStateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Services/CreateCurrentStateService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Services/PlayerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Services/PlayerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +20,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/866da261a9df76b7935cc23342cc3170c987664630ed9a27193d1fb54ff0b6b8/Stack.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/633820b9579f4675babed79321255f1767788/4c/0593baa3/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -76,12 +72,14 @@
       <workItem from="1648979631701" duration="1953000" />
       <workItem from="1649006715715" duration="4021000" />
       <workItem from="1649065202314" duration="24045000" />
+      <workItem from="1649174659134" duration="1159000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
@@ -93,14 +91,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/TheGatheringConsole/Program.cs</url>
           <line>41</line>
-          <properties documentPath="I:\Fork\Anlyse-7-The-gathering\TheGatheringConsole\Program.cs" initialLine="34" containingFunctionPresentation="method 'Main'">
-            <startOffsets>
-              <option value="1565" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1596" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="I:\Fork\Anlyse-7-The-gathering\TheGatheringConsole\Program.cs" initialLine="34" containingFunctionPresentation="method 'Main'" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
