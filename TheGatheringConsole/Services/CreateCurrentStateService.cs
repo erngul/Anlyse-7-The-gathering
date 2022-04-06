@@ -27,13 +27,13 @@ namespace TheGatheringConsole.Services
         {
             Player result = new Player();
             result.Deck = GenerateDeck();
-            result.HandCards = new List<Card>();
+            result.HandCards = new List<ICard>();
             for (int i = 0; i < 7; i++)
             {
                 result.HandCards.Add(result.Deck.Pop());
             }
 
-            result.DiscardPile = new List<Card>();
+            result.DiscardPile = new List<ICard>();
             // result.EnergyReserve = new Dictionary<CardColorsEnum, int>()
             // {
             //     { CardColorsEnum.Red, 0 },
@@ -43,15 +43,15 @@ namespace TheGatheringConsole.Services
             //     { CardColorsEnum.Green, 0 }
             // };
             result.EnergyReserve = 0;
-            result.FloorCards = new List<Card>();
+            result.FloorCards = new List<ICard>();
             result.PlayerNumber = playerNumber;
             return result;
         }
 
-        public Stack<Card> GenerateDeck()
+        public Stack<ICard> GenerateDeck()
         {
             Random rnd = new Random();
-            Stack<Card> result = new Stack<Card>();
+            Stack<ICard> result = new Stack<ICard>();
             for (int i = 0; i < 30; i++)
             {
                 CardTypeEnum cardType = RandomEnumValue<CardTypeEnum> ();
@@ -60,7 +60,7 @@ namespace TheGatheringConsole.Services
                     SpellCard spellCard = new SpellCard()
                     {
                         Color = RandomEnumValue<CardColorsEnum>(),
-                        EffectsType = RandomEnumValue<CardEffectsTypeEnum>(),
+                        EffectsType = CardEffectsTypeEnum.Temporary,
                         SpellCost = rnd.Next(0, 4),
                         SpellEffect = RandomEnumValue<SpellEfectEnum>(),
                     };
@@ -70,9 +70,9 @@ namespace TheGatheringConsole.Services
                     {
                         spellCard.EffectValue = rnd.Next(0, 4);
                     }
-                    spellCard.Hash = spellCard.GetHashCode();
-                    var sameCards = result.Where(c => c.Hash == spellCard.Hash).ToList();
-                    if (sameCards.Count <= 3)
+                    spellCard.HashCode = spellCard.GetHashCode();
+                    var sameCards = result.Where(c => c.HashCode == spellCard.HashCode).ToList();
+                    if (sameCards.Count < 3)
                     {
                         result.Push(spellCard);
                     }
@@ -87,15 +87,15 @@ namespace TheGatheringConsole.Services
                     Creature creatureCard = new Creature()
                     {
                         Color = RandomEnumValue<CardColorsEnum>(),
-                        EffectsType = RandomEnumValue<CardEffectsTypeEnum>(),
+                        EffectsType = CardEffectsTypeEnum.Permanent,
                         SpellCost = rnd.Next(0, 4),
                         SpellEffect = RandomEnumValue<SpellEfectEnum>(),
                         Attack = rnd.Next(0,10),
                         Defence = rnd.Next(0,10)
                     };
-                    creatureCard.Hash = creatureCard.GetHashCode();
-                    var sameCards = result.Where(c => c.Hash == creatureCard.Hash).ToList();
-                    if (sameCards.Count <= 3)
+                    creatureCard.HashCode = creatureCard.GetHashCode();
+                    var sameCards = result.Where(c => c.HashCode == creatureCard.HashCode).ToList();
+                    if (sameCards.Count < 3)
                     {
                         result.Push(creatureCard);
                     }
@@ -110,12 +110,12 @@ namespace TheGatheringConsole.Services
                     LandCard landCard = new LandCard()
                     {
                         Color = RandomEnumValue<CardColorsEnum>(),
-                        EffectsType = RandomEnumValue<CardEffectsTypeEnum>(),
+                        EffectsType = CardEffectsTypeEnum.Permanent,
                         EnergyUsedInRound = false
                     };
-                    landCard.Hash = landCard.GetHashCode();
-                    var sameCards = result.Where(c => c.Hash == landCard.Hash).ToList();
-                    if (sameCards.Count <= 3)
+                    landCard.HashCode = landCard.GetHashCode();
+                    var sameCards = result.Where(c => c.HashCode == landCard.HashCode).ToList();
+                    if (sameCards.Count < 3)
                     {
                         result.Push(landCard);
                     }

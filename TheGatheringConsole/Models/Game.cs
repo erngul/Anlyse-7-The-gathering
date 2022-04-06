@@ -7,6 +7,7 @@ namespace TheGatheringConsole.Models
     {
         public int Turn = 0;
         public Player[] Players = new Player[2];
+        public Player CurrentPlayer { get; set; }
         public Stack<(SpellCard, Player)> SpellStack { get; set; }
     }
 }

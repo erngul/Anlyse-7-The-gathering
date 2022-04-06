@@ -15,6 +15,7 @@ namespace TheGatheringConsole
             Console.WriteLine("Hello World!");
             Boolean gameNotOver = true;
             PlayerService playerService = new PlayerService();
+            GameService gameService = new GameService();
             while (gameNotOver)
             {
                 game.Turn += 1;
@@ -23,7 +24,8 @@ namespace TheGatheringConsole
                 foreach (var player  in game.Players)
                 {
                     Console.WriteLine($"Player {player.PlayerNumber} is playing.");
-                    playerService.PlaySpellStack(player, game);
+                    game.CurrentPlayer = player;
+                    gameService.PlaySpellStack(game);
                     if (playerService.CheckPlayerPlayable(player))
                     {
                         gameNotOver = false;
@@ -33,9 +35,9 @@ namespace TheGatheringConsole
                     playerService.CheckFloorCards(player);
                     playerService.DrawCard(player);
                     playerService.PlaceLandCards(player, game.Turn);
-                    playerService.SummonCreatureCards(player, game);
-                    playerService.UseCreatureCards(player, game);
-                    playerService.SummonSpellCards(player, game);
+                    playerService.SummonCreatureCards(game);
+                    playerService.UseCreatureCards(game);
+                    playerService.SummonSpellCards(game);
                     playerService.PutLandCardEnergyToReserve(player);
                     Console.WriteLine("");
 

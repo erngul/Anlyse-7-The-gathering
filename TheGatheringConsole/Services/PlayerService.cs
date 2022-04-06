@@ -7,57 +7,6 @@ namespace TheGatheringConsole.Services
 {
     public class PlayerService
     {
-        public void PlaySpellStack(Player player, Game game)
-        {
-            while (game.SpellStack.Count > 0)
-            {
-                var currentSpell = game.SpellStack.Pop();
-                if (currentSpell.Item1.SpellEffect == SpellEfectEnum.CounterSpell && game.SpellStack.Count > 0)
-                {
-                    var canceledSpell = game.SpellStack.Pop();
-                    Console.WriteLine($"{canceledSpell} has been cancelled with a counter spell from player {player}");
-                }
-                else if (currentSpell.Item1 is Creature creature)
-                {
-                    if (creature.CreatureState == CreatureStateEnum.Atacker)
-                    {
-                        AttackEnemy(creature, currentSpell.Item2, game);
-                    }
-                }
-                else
-                {
-                    UseSpellEffect(currentSpell.Item1, currentSpell.Item2, game);
-                }
-            }
-        }
-
-        public void AttackEnemy(Creature creature, Player player, Game game)
-        {
-            foreach (var p in game.Players)
-            {
-                if (p.PlayerNumber != player.PlayerNumber)
-                {
-                    foreach (var card in p.FloorCards)
-                    {
-                        if (card is Creature enemycreature)
-                        {
-                            if (creature.CreatureState == CreatureStateEnum.Defender)
-                            {
-                                enemycreature.Defence -= creature.Attack;
-                                Console.WriteLine(
-                                    $"Creature with {enemycreature.Attack}/{enemycreature.Defence + creature.Attack} from user {p.PlayerNumber} has taken {creature.Attack} damage from a enemy creature with {creature.Attack}/{creature.Defence} and has now {enemycreature.Defence} defence left.");
-                                return;
-                            }
-                        }
-                    }
-
-                    p.Life -= creature.Attack;
-                    Console.WriteLine(
-                        $"Player {p.PlayerNumber} with {p.Life + creature.Attack} life has taken {creature.Attack} damage from a enemy creature with {creature.Attack}/{creature.Defence} and has now {p.Life} life left.");
-                }
-            }
-        }
-
         public Boolean CheckPlayerPlayable(Player player)
         {
             if (player.Deck.Count <= 0)
@@ -116,10 +65,6 @@ namespace TheGatheringConsole.Services
                     }
                 }
             }
-        }
-
-        public void CheckDeck(Player player)
-        {
         }
 
         public void DrawCard(Player player)
@@ -202,52 +147,57 @@ namespace TheGatheringConsole.Services
             return energy;
         }
 
-        public void UseCreatureCards(Player player, Game game)
+        public void UseCreatureCards(Game game)
         {
             Random rnd = new Random();
-            for (int i = 0; i < player.FloorCards.Count; i++)
+            for (int i = 0; i < game.CurrentPlayer.FloorCards.Count; i++)
             {
-                var card = player.FloorCards[i];
+                var card = game.CurrentPlayer.FloorCards[i];
                 if (card is Creature creature)
                 {
-                    if (rnd.Next(2) == 1)
+                    if (rnd.Next(2) == 1 && creature.CreatureState != CreatureStateEnum.Atacker)
                     {
                         creature.CreatureState = CreatureStateEnum.Atacker;
-                        player.FloorCards[i] = creature;
+                        game.CurrentPlayer.FloorCards[i] = creature;
+                        if (creature.SummonedInTurn != game.Turn)
+                        {
+                            game.SpellStack.Push((creature, game.CurrentPlayer));
+                        }
+
                     }
                 }
             }
         }
 
-        public void SummonCreatureCards(Player player, Game game)
+        public void SummonCreatureCards(Game game)
         {
-            for (int i = 0; i < player.HandCards.Count; i++)
+            for (int i = 0; i < game.CurrentPlayer.HandCards.Count; i++)
             {
-                var card = player.HandCards[i];
+                var card = game.CurrentPlayer.HandCards[i];
                 if (card is Creature creature)
                 {
-                    if (creature.SpellCost < CountEnergy(player))
+                    if (creature.SpellCost < CountEnergy(game.CurrentPlayer))
                     {
-                        int landCardEnergyUsed = UseLandCardEnergy(player, creature.SpellCost);
+                        int landCardEnergyUsed = UseLandCardEnergy(game.CurrentPlayer, creature.SpellCost);
                         int reserveEnergyAmountNeeded = 0;
                         if (landCardEnergyUsed < creature.SpellCost)
                         {
                             reserveEnergyAmountNeeded = creature.SpellCost - landCardEnergyUsed;
-                            player.EnergyReserve -= reserveEnergyAmountNeeded;
+                            game.CurrentPlayer.EnergyReserve -= reserveEnergyAmountNeeded;
                         }
 
                         creature.SummonedInTurn = game.Turn;
-                        player.FloorCards.Add(creature);
-                        player.HandCards.RemoveAt(i);
+                        game.CurrentPlayer.FloorCards.Add(creature);
+                        game.CurrentPlayer.HandCards.RemoveAt(i);
                         Console.WriteLine(
                             $"A {creature.Color} creature with {creature.Attack}/{creature.Defence}(attack/defence) creature has been summoned to the floor. " +
                             $"{landCardEnergyUsed} lands used for energy and {reserveEnergyAmountNeeded} reserve energy is used.");
                         if (creature.SpellEffect != SpellEfectEnum.None)
                         {
-                            game.SpellStack.Push((creature, player));
+                            game.SpellStack.Push((creature, game.CurrentPlayer));
                             Console.WriteLine(
                                 $"The creature has the effect that does the following {creature.SpellEffect}");
-                            CheckIfEnemyHasCounterSpell(player, game);
+                            CheckIfEnemyHasCounterSpell(game.CurrentPlayer, game);
                         }
                         else
                         {
@@ -281,36 +231,36 @@ namespace TheGatheringConsole.Services
             }
         }
 
-        public void SummonSpellCards(Player player, Game game)
+        public void SummonSpellCards(Game game)
         {
            
-            for (int i = 0; i < player.HandCards.Count; i++)
+            for (int i = 0; i < game.CurrentPlayer.HandCards.Count; i++)
             {
-                var card = player.HandCards[i];
+                var card = game.CurrentPlayer.HandCards[i];
                 if (card is SpellCard spellCard)
                 {
-                    if (spellCard.SpellCost < CountEnergy(player))
+                    if (spellCard.SpellCost < CountEnergy(game.CurrentPlayer))
                     {
-                        int landCardEnergyUsed = UseLandCardEnergy(player, spellCard.SpellCost);
+                        int landCardEnergyUsed = UseLandCardEnergy(game.CurrentPlayer, spellCard.SpellCost);
                         int reserveEnergyAmountNeeded = 0;
                         if (landCardEnergyUsed < spellCard.SpellCost)
                         {
                             reserveEnergyAmountNeeded = spellCard.SpellCost - landCardEnergyUsed;
-                            player.EnergyReserve -= reserveEnergyAmountNeeded;
+                            game.CurrentPlayer.EnergyReserve -= reserveEnergyAmountNeeded;
                         }
 
                         spellCard.SummonedInTurn = game.Turn;
-                        player.FloorCards.Add(spellCard);
-                        player.HandCards.RemoveAt(i);
+                        game.CurrentPlayer.FloorCards.Add(spellCard);
+                        game.CurrentPlayer.HandCards.RemoveAt(i);
                         Console.WriteLine(
                             $"A {spellCard.Color} spellcard with spell effect {spellCard.SpellEffect} is been used it needs {spellCard.SpellCost} energy cost. " +
                             $"{landCardEnergyUsed} lands used for energy and {reserveEnergyAmountNeeded} reserve energy is used.");
                         if (spellCard.SpellEffect != SpellEfectEnum.None)
                         {
-                            game.SpellStack.Push((spellCard, player));
+                            game.SpellStack.Push((spellCard, game.CurrentPlayer));
                             Console.WriteLine(
                                 $"The spellCard has the effect that does the following {spellCard.SpellEffect}");
-                            CheckIfEnemyHasCounterSpell(player, game);
+                            CheckIfEnemyHasCounterSpell(game.CurrentPlayer, game);
                         }
                         else
                         {
@@ -320,75 +270,6 @@ namespace TheGatheringConsole.Services
                 }
             }
         }
-
-        public void UseSpellEffect(SpellCard card, Player player, Game game)
-        {
-            switch (card.SpellEffect)
-            {
-                case SpellEfectEnum.AddAttackDamage:
-                    AddAttackDamageForFloorCards(card, player);
-                    break;
-                case SpellEfectEnum.AddDefence:
-                    AddDefenceForFloorCards(card, player);
-                    break;
-                case SpellEfectEnum.AddAttackDamageAndShield:
-                    AddAttackDamageForFloorCards(card, player);
-                    AddDefenceForFloorCards(card, player);
-                    break;
-                case SpellEfectEnum.RemoveRandomCardFromOpenent:
-                    RemoveRandomCardFromOpenent(player, game);
-                    break;
-            }
-        }
-
-        public void AddAttackDamageForFloorCards(SpellCard spellCard, Player player)
-        {
-            for (int i = 0; i < player.FloorCards.Count; i++)
-            {
-                var card = player.FloorCards[i];
-                if (card is Creature creature)
-                {
-                    Console.WriteLine(
-                        $"Creature with {creature.Attack}/{creature.Defence} has gotton extra attack damage from a spell and has now {creature.Attack + spellCard.EffectValue} attack.");
-                    creature.Attack += spellCard.EffectValue;
-                    player.FloorCards[i] = creature;
-                }
-            }
-        }
-
-        public void AddDefenceForFloorCards(SpellCard spellCard, Player player)
-        {
-            for (int i = 0; i < player.FloorCards.Count; i++)
-            {
-                var card = player.FloorCards[i];
-                if (card is Creature creature)
-                {
-                    Console.WriteLine(
-                        $"Creature with {creature.Attack}/{creature.Defence} has gotton extra defence from a spell and has now {creature.Defence + spellCard.EffectValue} defence.");
-                    creature.Defence += spellCard.EffectValue;
-                    player.FloorCards[i] = creature;
-                }
-            }
-        }
-
-        public void RemoveRandomCardFromOpenent(Player player, Game game)
-        {
-            Random rnd = new Random();
-            foreach (var p in game.Players)
-            {
-                if (p.PlayerNumber != player.PlayerNumber)
-                {
-                    if (p.HandCards.Count > 0)
-                    {
-                        int randomNumber = rnd.Next(0, p.HandCards.Count - 1);
-                        p.HandCards.RemoveAt(randomNumber);
-                        Console.WriteLine(
-                            $"The creature has the effect that removes a random card from the opponent hand.");
-                    }
-                }
-            }
-        }
-
 
         public void PutLandCardEnergyToReserve(Player player)
         {
@@ -408,7 +289,7 @@ namespace TheGatheringConsole.Services
                 }
             }
 
-            Console.WriteLine($"{energy} cards energy has been added to energy reserve.");
+            Console.WriteLine($"{energy} land cards energy has been added to energy reserve.");
         }
     }
 }

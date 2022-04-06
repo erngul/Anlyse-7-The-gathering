@@ -5,13 +5,13 @@ namespace TheGatheringConsole.Models
 {
     public class Player
     {
-        public Stack<Card> Deck { get; set; }
-        public List<Card> HandCards { get; set; }
+        public Stack<ICard> Deck { get; set; }
+        public List<ICard> HandCards { get; set; }
         public int Life = 10;
         public int EnergyReserve { get; set; }
         // public Dictionary<CardColorsEnum, int> EnergyReserve { get; set; }
-        public List<Card> DiscardPile { get; set; }
-        public List<Card> FloorCards { get; set; }
+        public List<ICard> DiscardPile { get; set; }
+        public List<ICard> FloorCards { get; set; }
         public int PlayerNumber { get; set; }
     }
 }
