@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TheGatheringConsole/StateMachine.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.vs/The gathering/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/The gathering/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/Card.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/Card.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/LandCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/LandCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Models/SpellCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Models/SpellCard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Services/CreateCurrentStateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Services/CreateCurrentStateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/Services/PlayerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/Services/PlayerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vs/The gathering/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/The gathering/v17/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/SequenceDiagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/SequenceDiagram.drawio" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +85,8 @@
       <workItem from="1649174659134" duration="1159000" />
       <workItem from="1649261895872" duration="2138000" />
       <workItem from="1649267735100" duration="8029000" />
+      <workItem from="1649346679969" duration="283000" />
+      <workItem from="1649348606344" duration="1272000" />
     </task>
     <servers />
   </component>
