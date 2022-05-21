@@ -4,13 +4,7 @@
     <projectFile>TheGatheringConsole/TheGatheringConsole.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TheGatheringConsole/StateMachine.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/The gathering/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/The gathering/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/The gathering/v17/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/.vs/The gathering/v17/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TheGatheringConsole/SequenceDiagram.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/TheGatheringConsole/SequenceDiagram.drawio" afterDir="false" />
-    </list>
+    <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,10 +20,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/866da261a9df76b7935cc23342cc3170c987664630ed9a27193d1fb54ff0b6b8/Stack.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/633820b9579f4675babed79321255f1767788/4c/0593baa3/Object.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -87,6 +77,7 @@
       <workItem from="1649267735100" duration="8029000" />
       <workItem from="1649346679969" duration="283000" />
       <workItem from="1649348606344" duration="1272000" />
+      <workItem from="1653145214816" duration="746000" />
     </task>
     <servers />
   </component>
@@ -98,17 +89,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/TheGatheringConsole/Program.cs</url>
-          <line>45</line>
-          <properties documentPath="I:\Fork\Anlyse-7-The-gathering\TheGatheringConsole\Program.cs" initialLine="34" containingFunctionPresentation="method 'Main'" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
