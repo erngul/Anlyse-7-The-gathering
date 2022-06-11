@@ -4,7 +4,10 @@
     <projectFile>TheGatheringConsole/TheGatheringConsole.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="" />
+    <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Class Diagram1.asta" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Class Diagram1.asta" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,6 +81,8 @@
       <workItem from="1649346679969" duration="283000" />
       <workItem from="1649348606344" duration="1272000" />
       <workItem from="1653145214816" duration="1126000" />
+      <workItem from="1653316262528" duration="77000" />
+      <workItem from="1653316357965" duration="956000" />
     </task>
     <servers />
   </component>
