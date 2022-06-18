@@ -2,6 +2,7 @@
 {
     public class Player
     {
+
         public int Life { get; set; }
         public Hand? Hand { get; set; }
         public DiscardPile? DiscardPile { get; set; }

@@ -8,26 +8,36 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Errow\\.nuget\\packages\\": {}
+    "C:\\Users\\eren_\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\Fork\\Anlyse-7-The-gathering\\New\\The gathering v2\\The gathering v2.csproj",
+      "projectUniqueName": "C:\\Users\\eren_\\projects\\Anlyse-7-The-gathering\\New\\The gathering v2\\The gathering v2.csproj",
       "projectName": "The gathering v2",
-      "projectPath": "I:\\Fork\\Anlyse-7-The-gathering\\New\\The gathering v2\\The gathering v2.csproj",
-      "packagesPath": "C:\\Users\\Errow\\.nuget\\packages\\",
-      "outputPath": "I:\\Fork\\Anlyse-7-The-gathering\\New\\The gathering v2\\obj\\",
+      "projectPath": "C:\\Users\\eren_\\projects\\Anlyse-7-The-gathering\\New\\The gathering v2\\The gathering v2.csproj",
+      "packagesPath": "C:\\Users\\eren_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eren_\\projects\\Anlyse-7-The-gathering\\New\\The gathering v2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Errow\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eren_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -51,7 +61,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -60,7 +71,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400-preview.22301.10\\RuntimeIdentifierGraph.json"
       }
     }
   }

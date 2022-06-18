@@ -1,8 +1,7 @@
 ﻿namespace The_gathering_v2.Models.Cards
 {
-    public class PermanentCard : ISpellCard
+    public interface ISpellCard : ICard
     {
-        public Color? Color { get; set; }
         public IEffect Effect { get; set; }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace The_gathering_v2.Models
 {
-    public abstract class Zone
+    public interface IZone
     {
-        public List<Card>? Cards { get; set; }
+        public List<ICard>? Cards { get; set; }
     }
 }

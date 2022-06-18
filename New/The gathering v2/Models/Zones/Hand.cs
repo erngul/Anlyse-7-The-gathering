@@ -1,7 +1,8 @@
 ﻿namespace The_gathering_v2.Models
 {
-    public class Hand : Zone
+    public class Hand : IZone
     {
-        
+        public List<ICard>? Cards { get; set; }
+
     }
 }
