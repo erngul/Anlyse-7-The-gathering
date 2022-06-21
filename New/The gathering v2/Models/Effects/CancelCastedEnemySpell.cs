@@ -1,6 +1,6 @@
-﻿namespace The_gathering_v2.Models.Effects;
+﻿namespace The_gathering_v2.Models.Effects.CounterSpells;
 
-public class AddAttackAndDefenceValue : IEffect
+public class CancelCastedEnemySpell : IEffect
 {
     public int Turns { get; set; }
     public string? Description { get; set; }

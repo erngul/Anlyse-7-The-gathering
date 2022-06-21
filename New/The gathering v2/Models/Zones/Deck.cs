@@ -1,8 +1,8 @@
 ﻿namespace The_gathering_v2.Models
 {
-    public class Deck : IZone
+    public class Deck
     {
-        public List<ICard>? Cards { get; set; }
+        public Stack<ICard>? Cards { get; set; }
 
     }
 }

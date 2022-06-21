@@ -3,6 +3,7 @@
     public class InstantaneousCard : ISpellCard
     {
         public Color? Color { get; set; }
+        public bool Used { get; set; }
         public IEffect Effect { get; set; }
     }
 }

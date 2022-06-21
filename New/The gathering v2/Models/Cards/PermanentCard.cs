@@ -3,6 +3,7 @@
     public class PermanentCard : ISpellCard
     {
         public Color? Color { get; set; }
-        public IEffect Effect { get; set; }
+        public bool Used { get; set; }
+        public IEffect? Effect { get; set; }
     }
 }

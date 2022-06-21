@@ -2,22 +2,27 @@
 using The_gathering_v2.Models.Cards;
 using The_gathering_v2.Models.Colors;
 using The_gathering_v2.Models.Effects;
+using The_gathering_v2.Models.PlayerState;
 
 namespace The_gathering_v2.Models
 {
     public class Game
     {
         public int CurrentTurn { get; set; }
-        public Player? Attacker { get; set; }
-        public Player? Defender { get; set; }
+        public Player? Player1 { get; set; }
+        public Player? Player2 { get; set; }
         public Stack<ICard>? InterruptionStack { get; set; }
+        public Play Play { get; set; }
+        
 
         public void CreateCurrentState()
         {
+            Play = new Play();
             CurrentTurn = 2;
-            Attacker = new Player()
+            Player1 = new Player()
             {
                 Life = 10,
+                PlayerState = new Attacker(),
                 DiscardPile = new DiscardPile()
                 {
                     Cards = new List<ICard>()
@@ -59,5 +64,33 @@ namespace The_gathering_v2.Models
 
             };
         }
+
+        public void StartGame()
+        {
+            
+        }
+
+        public void ChangePlayerState()
+        {
+            Player1.ChangePlayerState();
+            Player2.ChangePlayerState();
+            if (Player1.PlayerState is Attacker)
+            {
+                Play.Attacker = Player1;
+                Play.Defender = Player2;
+            }
+            else
+            {
+                Play.Attacker = Player2;
+                Play.Defender = Player1;
+            }
+        }
+
+        public void NextTurn()
+        {
+            CurrentTurn++;
+            ChangePlayerState();
+        }
+        
     }
 }

@@ -2,6 +2,7 @@
 {
     public class Creature : PermanentCard
     {
-        
+        public int AttackValue { get; set; }
+        public int DefenceValue { get; set; }
     }
 }

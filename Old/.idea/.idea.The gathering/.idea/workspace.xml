@@ -5,8 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c0d01be-fd22-41b3-9667-7e255995ae41" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.The gathering/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Class Diagram1.asta" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Class Diagram1.asta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Observers/DrawingPhase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Observers/EndingPhase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Observers/MainPhase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Observers/PreparationPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Models/Class-Diagram-11-06.asta" beforeDir="false" afterPath="$PROJECT_DIR$/../Models/Class-Diagram-11-06.asta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/CreatureCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/CreatureCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/InstantaneousCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/InstantaneousCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/LandCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/LandCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/PermanentCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Cards/PermanentCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/AddAttackAndDefenceValue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/AddAttackAndDefenceValue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/AllCreaturesDealHalfDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/AllCreaturesDealHalfDamage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/CounterSpells/CancelCastedEnemySpell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/CancelCastedEnemySpell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/ICounterSpell.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/RemoveRandomCard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/RemoveRandomCard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/SkipDrawingPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Effects/SkipDrawingPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Interfaces/ICard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Interfaces/ICard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Interfaces/IEffect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Interfaces/IEffect.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Interfaces/ITurnPhases.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Interfaces/IZone.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/TurnPhases/DrawingPhase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/TurnPhases/EndingPhase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/TurnPhases/MainPhase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/TurnPhases/PreparationPhase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/Deck.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/Deck.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/DiscardPile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/DiscardPile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/Hand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Models/Zones/Hand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/Debug/net6.0/The gathering v2.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/Debug/net6.0/The gathering v2.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/Debug/net6.0/The gathering v2.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/Debug/net6.0/The gathering v2.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/The gathering v2.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/The gathering v2.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/The gathering v2.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/The gathering v2.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../New/The gathering v2/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../New/The gathering v2/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,7 +50,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -24,6 +60,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/633820b9579f4675babed79321255f1767788/4c/0593baa3/Object.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -31,6 +70,7 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26R3WuoyOlk5iTtn1IonCadVNvo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -83,6 +123,7 @@
       <workItem from="1653145214816" duration="1126000" />
       <workItem from="1653316262528" duration="77000" />
       <workItem from="1653316357965" duration="956000" />
+      <workItem from="1655838639982" duration="1396000" />
     </task>
     <servers />
   </component>
