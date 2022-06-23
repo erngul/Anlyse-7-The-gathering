@@ -4,5 +4,7 @@
     {
         public Color? Color { get; set; }
         public bool Used { get; set; }
+        public void Use(GeneralBoard generalBoard);
+        public void Reset();
     }
 }

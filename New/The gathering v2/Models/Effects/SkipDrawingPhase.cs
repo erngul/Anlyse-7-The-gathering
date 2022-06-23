@@ -3,12 +3,23 @@
 public class SkipDrawingPhase : IEffect
 {
     public int Turns { get; set; }
-    public string? Description { get; set; }
-    public Play? Play { get; set; }
     public bool PreparationPhase { get; set; } = true;
-
-    public void Effect()
+    public string? Description { get; set; } = "Enemy Skips drawing phase.";
+    public Deck Deck { get; set; }
+    public void Use(GeneralBoard generalBoard)
     {
         throw new NotImplementedException();
+    }
+
+    public void OnDestroy(GeneralBoard generalBoard)
+    {
+        generalBoard.Defender.Deck = Deck;
+    }
+
+
+    public void Effect(GeneralBoard generalBoard)
+    {
+        Deck = generalBoard.Defender.Deck;
+        generalBoard.Defender.Deck = null;
     }
 }

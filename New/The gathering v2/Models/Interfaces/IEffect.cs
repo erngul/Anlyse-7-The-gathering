@@ -4,7 +4,8 @@ public interface IEffect
 {
     public int Turns { get; set; }
     public string? Description { get; set; }
-    public Play? Play { get; set; }
-    public void Effect();
+    public void Effect(GeneralBoard generalBoard);
+    public void Use(GeneralBoard generalBoard);
+    public void OnDestroy(GeneralBoard generalBoard);
     public bool PreparationPhase { get; set; }
 }

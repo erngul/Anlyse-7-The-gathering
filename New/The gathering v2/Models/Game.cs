@@ -9,18 +9,18 @@ namespace The_gathering_v2.Models
     public class Game
     {
         public int CurrentTurn { get; set; }
-        public Player? Player1 { get; set; }
-        public Player? Player2 { get; set; }
-        public Stack<ICard>? InterruptionStack { get; set; }
-        public Play Play { get; set; }
+        public bool AllPlayersPlayed { get; set; } = false;
+        public Player? PlayerA { get; set; }
+        public Player? PlayerB { get; set; }
+        public GeneralBoard GeneralBoard { get; set; }
         
 
         public void CreateCurrentState()
         {
-            Play = new Play();
             CurrentTurn = 2;
-            Player1 = new Player()
+            PlayerA = new Player()
             {
+                Name = "PlayerA",
                 Life = 10,
                 PlayerState = new Attacker(),
                 DiscardPile = new DiscardPile()
@@ -34,7 +34,10 @@ namespace The_gathering_v2.Models
                         new Creature()
                         {
                             Color = new Blue(),
-                            Effect = new RemoveRandomCard()
+                            Effect = new RemoveRandomCard(),
+                            AttackValue = 2,
+                            DefenceValue = 2,
+                            CostToBePlayed = 2
                         },
                         new LandCard()
                         {
@@ -42,8 +45,28 @@ namespace The_gathering_v2.Models
                         },
                         new Creature()
                         {
+                            Color = new Blue(),
+                            Effect = new RemoveRandomCard(),
+                            AttackValue = 2,
+                            DefenceValue = 2,
+                            CostToBePlayed = 2
+                        },
+                        new Creature()
+                        {
+                            Color = new Blue(),
+                            Effect = new RemoveRandomCard(),
+                            AttackValue = 2,
+                            DefenceValue = 2,
+                            CostToBePlayed = 2
+                        },
+                        new LandCard()
+                        {
+                            Color = new Blue()
+                        },
+                        new LandCard()
+                        {
                             Color = new Red()
-                        }
+                        },
                     }
                 },
                 Board = new Board()
@@ -60,36 +83,162 @@ namespace The_gathering_v2.Models
                         }
                     }
                 },
+                Deck = new Deck()
+                {
+                    Cards = new Stack<ICard>()
+                },
                 
-
+            };
+            PlayerA.Deck.Cards.Push(new Creature()
+            {
+                Color = new Red(),
+                Effect = new RemoveRandomCard(),
+                AttackValue = 2,
+                DefenceValue = 2,
+                CostToBePlayed = 2
+            });
+            PlayerA.Deck.Cards.Push(new Creature()
+            {
+                Color = new Red(),
+                Effect = new RemoveRandomCard(),
+                AttackValue = 2,
+                DefenceValue = 2,
+                CostToBePlayed = 2
+            });
+            
+            
+            
+            PlayerB = new Player()
+            {
+                Name = "PlayerB",
+                Life = 10,
+                PlayerState = new Attacker(),
+                DiscardPile = new DiscardPile()
+                {
+                    Cards = new List<ICard>()
+                },
+                Hand = new Hand()
+                {
+                    Cards = new List<ICard>()
+                    {
+                        new ArtifactCard()
+                        {
+                            Effects = new List<IEffect>()
+                            {
+                                new AllCreaturesDealHalfDamage(),
+                                new SkipDrawingPhase()
+                                {
+                                    Turns = 1
+                                }
+                            },
+                            CostToBePlayed = 2
+                        },
+                        new LandCard()
+                        {
+                            Color = new Blue()
+                        },
+                        new Creature()
+                        {
+                            Color = new Blue(),
+                            Effect = new RemoveRandomCard(),
+                            AttackValue = 2,
+                            DefenceValue = 2,
+                            CostToBePlayed = 2
+                        },
+                        new Creature()
+                        {
+                            Color = new Blue(),
+                            Effect = new RemoveRandomCard(),
+                            AttackValue = 2,
+                            DefenceValue = 2,
+                            CostToBePlayed = 2
+                        }
+                    }
+                },
+                Board = new Board()
+                {
+                    Cards = new List<ICard>()
+                    {
+                        new LandCard()
+                        {
+                            Color = new Blue()
+                        },
+                        new LandCard()
+                        {
+                            Color = new Blue()
+                        },
+                        new LandCard()
+                        {
+                            Color = new Green()
+                        },
+                        new LandCard()
+                        {
+                            Color = new Green()
+                        },
+                    }
+                },
+                Deck = new Deck()
+                {
+                    Cards = new Stack<ICard>()
+                },
+                
+            };
+            PlayerB.Deck.Cards.Push(new Creature()
+            {
+                Color = new Red(),
+                Effect = new RemoveRandomCard(),
+                AttackValue = 2,
+                DefenceValue = 2,
+                CostToBePlayed = 2
+            });
+            PlayerB.Deck.Cards.Push(new Creature()
+            {
+                Color = new Red(),
+                Effect = new RemoveRandomCard(),
+                AttackValue = 2,
+                DefenceValue = 2,
+                CostToBePlayed = 2
+            });
+            GeneralBoard = new GeneralBoard()
+            {
+                Attacker = PlayerA,
+                Defender = PlayerB
             };
         }
 
         public void StartGame()
         {
-            
         }
 
         public void ChangePlayerState()
         {
-            Player1.ChangePlayerState();
-            Player2.ChangePlayerState();
-            if (Player1.PlayerState is Attacker)
+            PlayerA.ChangePlayerState();
+            PlayerB.ChangePlayerState();
+            if (PlayerA.PlayerState is Attacker)
             {
-                Play.Attacker = Player1;
-                Play.Defender = Player2;
+                GeneralBoard.Attacker = PlayerA;
+                GeneralBoard.Defender = PlayerB;
             }
             else
             {
-                Play.Attacker = Player2;
-                Play.Defender = Player1;
+                GeneralBoard.Attacker = PlayerB;
+                GeneralBoard.Defender = PlayerA;
             }
         }
-
+        
         public void NextTurn()
         {
-            CurrentTurn++;
+            if (AllPlayersPlayed)
+            {
+                CurrentTurn++;
+                Console.WriteLine("");
+                Console.WriteLine($"Current turn: {CurrentTurn}");
+                AllPlayersPlayed = false;
+            }
             ChangePlayerState();
+            Console.WriteLine("");
+            Console.WriteLine($"The Attacker = {GeneralBoard.Attacker.Name} and the Defender = {GeneralBoard.Defender.Name}");
+            Console.WriteLine("");
         }
         
     }

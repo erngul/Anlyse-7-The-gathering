@@ -2,6 +2,8 @@
 {
     public interface ISpellCard : ICard
     {
-        public IEffect Effect { get; set; }
+        public abstract IEffect Effect { get; set; }
+        public int CostToBePlayed { get; set; }
+        public void OnDestroy(GeneralBoard generalBoard, Player player);
     }
 }

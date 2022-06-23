@@ -1,6 +1,6 @@
 ﻿namespace The_gathering_v2.Models.TurnPhases;
 
-public class DrawingPhase  : IObserver<Play>
+public class DrawingPhase  : IObserver<GeneralBoard>
 {
     public Game? Game { get; set; }
     public void OnCompleted()
@@ -13,8 +13,8 @@ public class DrawingPhase  : IObserver<Play>
         throw new NotImplementedException();
     }
 
-    public void OnNext(Play value)
+    public void OnNext(GeneralBoard value)
     {
-        
+        Console.WriteLine($"Attacker has {value.Attacker.Hand.Cards.Count} cards in hand.");
     }
 }

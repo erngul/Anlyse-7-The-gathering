@@ -2,6 +2,7 @@
 {
     public class Red : Color
     {
-        
+        public override string Name { get; set; } = "Red";
+
     }
 }

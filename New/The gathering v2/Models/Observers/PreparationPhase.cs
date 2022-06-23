@@ -1,6 +1,6 @@
 ﻿namespace The_gathering_v2.Models.TurnPhases;
 
-public class PreparationPhase  : IObserver<Play>
+public class PreparationPhase  : IObserver<GeneralBoard>
 {
     public Game? Game { get; set; }
 
@@ -14,11 +14,13 @@ public class PreparationPhase  : IObserver<Play>
         throw new NotImplementedException();
     }
 
-    public void OnNext(Play value)
+    public void OnNext(GeneralBoard value)
     {
-        Console.WriteLine($"{value.RestoredLands} lands are restored.");
-        // value.
-        value.RestoredLands = 0;
         
+        // value.
+        foreach (var C in value.Attacker.Board.Cards)
+        {
+            C.Reset();
+        }
     }
 }
