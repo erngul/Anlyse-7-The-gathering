@@ -27,7 +27,10 @@ public class MainPhase  : IObserver<GeneralBoard>
         {
             if (c is Creature creature)
             {
-                creature.Activate(value);
+                if (creature.Used)
+                {
+                    creature.Activate(value);
+                }
             }
         }
 

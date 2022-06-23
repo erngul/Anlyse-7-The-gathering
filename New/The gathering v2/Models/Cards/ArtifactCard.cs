@@ -20,7 +20,7 @@ namespace The_gathering_v2.Models.Cards
 
         public override void Use(GeneralBoard generalBoard)
         {
-            throw new NotImplementedException();
+            Used = true;
         }
 
         public override void Reset()
