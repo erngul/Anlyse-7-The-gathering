@@ -1,4 +1,8 @@
-﻿namespace The_gathering_v2.Models.Cards
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+namespace The_gathering_v2.Models.Cards
 {
     public class Creature : PermanentCard
     {
@@ -31,7 +35,7 @@
             player.DiscardPile.Cards.Add(this);
         }
 
-        public override void Use(GeneralBoard generalBoard)
+        public override void Use(GeneralBoard generalBoard, Player player)
         {
             Used = true;
         }
@@ -47,15 +51,15 @@
 
         public override void PlaceOnBoard(GeneralBoard generalBoard)
         {
-            if (generalBoard.consumeEnergyForSpellCard(generalBoard.Attacker, this))
+            if (generalBoard.ConsumeEnergyForSpellCard(generalBoard.Attacker, this))
             {
                 generalBoard.Attacker.Board.Cards.Add(this);
                 generalBoard.Attacker.Hand.Cards.Remove(this);
                 Console.WriteLine(
-                    $"Places 1 Creature with {AttackValue} attack value and {DefenceValue} Defence value. On the board.");
+                    $"Places 1 {this.Color.Name} Creature with {AttackValue} attack value and {DefenceValue} Defence value. On the board.");
                 if (Effect != null)
                 {
-                    Effect.Use(generalBoard);
+                    Effect.Use(generalBoard, generalBoard.Attacker);
                     Console.WriteLine(
                         $"Card has the effect {Effect.Description} and is added to the interruption stack");
                 }

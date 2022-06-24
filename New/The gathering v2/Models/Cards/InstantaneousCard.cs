@@ -1,4 +1,8 @@
-﻿namespace The_gathering_v2.Models.Cards
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+namespace The_gathering_v2.Models.Cards
 {
     public class InstantaneousCard : ISpellCard
     {
@@ -11,10 +15,10 @@
             throw new NotImplementedException();
         }
 
-        public void Use(GeneralBoard generalBoard)
+        public void Use(GeneralBoard generalBoard, Player player)
         {
-            generalBoard.InterruptionStack.Cards.Push(Effect);
-            generalBoard.Attacker.Hand.Cards.Remove(this);
+            Effect.Use(generalBoard, player);
+            player.Hand.Cards.Remove(this);
             Console.WriteLine("Plays 1 InstantaneousCard.");
             Used = true;
         }

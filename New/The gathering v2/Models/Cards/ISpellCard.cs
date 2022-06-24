@@ -1,4 +1,8 @@
-﻿namespace The_gathering_v2.Models.Cards
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+namespace The_gathering_v2.Models.Cards
 {
     public interface ISpellCard : ICard
     {

@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+
+using System.Collections;
 using The_gathering_v2.Models.Cards;
 using The_gathering_v2.Models.Colors;
 using The_gathering_v2.Models.Effects;
@@ -34,7 +39,7 @@ namespace The_gathering_v2.Models
                         new Creature()
                         {
                             Color = new Blue(),
-                            Effect = new RemoveRandomCard(),
+                            Effect = new EnemyRemovesRandomCard(),
                             AttackValue = 2,
                             DefenceValue = 2,
                             CostToBePlayed = 2
@@ -46,7 +51,7 @@ namespace The_gathering_v2.Models
                         new Creature()
                         {
                             Color = new Blue(),
-                            Effect = new RemoveRandomCard(),
+                            Effect = new EnemyRemovesRandomCard(),
                             AttackValue = 2,
                             DefenceValue = 2,
                             CostToBePlayed = 2
@@ -54,7 +59,7 @@ namespace The_gathering_v2.Models
                         new Creature()
                         {
                             Color = new Blue(),
-                            Effect = new RemoveRandomCard(),
+                            Effect = new EnemyRemovesRandomCard(),
                             AttackValue = 2,
                             DefenceValue = 2,
                             CostToBePlayed = 2
@@ -92,7 +97,7 @@ namespace The_gathering_v2.Models
             PlayerA.Deck.Cards.Push(new Creature()
             {
                 Color = new Red(),
-                Effect = new RemoveRandomCard(),
+                Effect = new EnemyRemovesRandomCard(),
                 AttackValue = 2,
                 DefenceValue = 2,
                 CostToBePlayed = 2
@@ -100,7 +105,7 @@ namespace The_gathering_v2.Models
             PlayerA.Deck.Cards.Push(new Creature()
             {
                 Color = new Red(),
-                Effect = new RemoveRandomCard(),
+                Effect = new EnemyRemovesRandomCard(),
                 AttackValue = 2,
                 DefenceValue = 2,
                 CostToBePlayed = 2
@@ -125,8 +130,20 @@ namespace The_gathering_v2.Models
                         {
                             Effects = new List<IEffect>()
                             {
-                                new AllCreaturesDealHalfDamage(),
-                                new SkipDrawingPhase()
+                                new AllEnemyCreaturesDealHalfDamage(),
+                                new EnemySkipsDrawingPhase()
+                                {
+                                    Turns = 1
+                                }
+                            },
+                            CostToBePlayed = 2
+                        },
+                        new ArtifactCard()
+                        {
+                            Effects = new List<IEffect>()
+                            {
+                                new AllEnemyCreaturesDealHalfDamage(),
+                                new EnemySkipsDrawingPhase()
                                 {
                                     Turns = 1
                                 }
@@ -137,21 +154,9 @@ namespace The_gathering_v2.Models
                         {
                             Color = new Blue()
                         },
-                        new Creature()
+                        new LandCard()
                         {
-                            Color = new Blue(),
-                            Effect = new RemoveRandomCard(),
-                            AttackValue = 2,
-                            DefenceValue = 2,
-                            CostToBePlayed = 2
-                        },
-                        new Creature()
-                        {
-                            Color = new Blue(),
-                            Effect = new RemoveRandomCard(),
-                            AttackValue = 2,
-                            DefenceValue = 2,
-                            CostToBePlayed = 2
+                            Color = new Blue()
                         }
                     }
                 },
@@ -186,7 +191,7 @@ namespace The_gathering_v2.Models
             PlayerB.Deck.Cards.Push(new Creature()
             {
                 Color = new Red(),
-                Effect = new RemoveRandomCard(),
+                Effect = new EnemyRemovesRandomCard(),
                 AttackValue = 2,
                 DefenceValue = 2,
                 CostToBePlayed = 2
@@ -194,7 +199,7 @@ namespace The_gathering_v2.Models
             PlayerB.Deck.Cards.Push(new Creature()
             {
                 Color = new Red(),
-                Effect = new RemoveRandomCard(),
+                Effect = new EnemyRemovesRandomCard(),
                 AttackValue = 2,
                 DefenceValue = 2,
                 CostToBePlayed = 2

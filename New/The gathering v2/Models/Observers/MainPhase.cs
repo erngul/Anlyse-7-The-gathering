@@ -1,4 +1,9 @@
-﻿using The_gathering_v2.Models.Cards;
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+
+using The_gathering_v2.Models.Cards;
 
 namespace The_gathering_v2.Models.TurnPhases;
 
@@ -17,10 +22,10 @@ public class MainPhase  : IObserver<GeneralBoard>
 
     public void OnNext(GeneralBoard value)
     {
-        while (value.InterruptionStack.Cards.Count > 0)
+        while (value.InterruptionStack.Count > 0)
         {
-            var effect = value.InterruptionStack.Cards.Pop();
-            effect.Effect(value);
+            var effect = value.InterruptionStack.Pop();
+            effect.Cards.Effect(value, effect.Player);
         }
 
         foreach (var c in value.Attacker.Board.Cards)
@@ -33,6 +38,5 @@ public class MainPhase  : IObserver<GeneralBoard>
                 }
             }
         }
-
     }
 }

@@ -1,4 +1,9 @@
-﻿using The_gathering_v2.Models.PlayerState;
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+
+using The_gathering_v2.Models.PlayerState;
 
 namespace The_gathering_v2.Models
 {

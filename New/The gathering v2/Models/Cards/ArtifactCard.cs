@@ -1,4 +1,9 @@
-﻿using The_gathering_v2.Models.Colors;
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+
+using The_gathering_v2.Models.Colors;
 
 namespace The_gathering_v2.Models.Cards
 {
@@ -18,7 +23,7 @@ namespace The_gathering_v2.Models.Cards
             throw new NotImplementedException();
         }
 
-        public override void Use(GeneralBoard generalBoard)
+        public override void Use(GeneralBoard generalBoard, Player player)
         {
             Used = true;
         }
@@ -41,7 +46,7 @@ namespace The_gathering_v2.Models.Cards
                 {
                     foreach (var effect in Effects)
                     {
-                        generalBoard.InterruptionStack.Cards.Push(effect);
+                        generalBoard.InterruptionStack.Push(new InterruptionStack(effect, generalBoard.Attacker));
                         Console.WriteLine(
                             $"Card has the effect {effect.Description} and is added to the interruption stack");
                     }
@@ -51,38 +56,26 @@ namespace The_gathering_v2.Models.Cards
 
         private bool UseColourlessEnergy(Player player, GeneralBoard generalBoard)
         {
-            bool result = false;
-            for (int i = 0; i < CostToBePlayed; i++)
-            {
-                
             var energyReserve = player.EnergyReserve.FirstOrDefault(e => e.Amount >= CostToBePlayed);
-            var landCard = player.Board.Cards.FirstOrDefault(c => c is LandCard && c.Used == false);
             if (energyReserve != null)
             {
-                energyReserve.Amount -= CostToBePlayed; 
-            }
-            else if(landCard != null)
-            {
-                var energyReserveCard = player.EnergyReserve.FirstOrDefault(e => e.Color.Name == landCard.Color.Name);
-                    if (energyReserveCard == null)
-                    {
-                        energyReserveCard = new EnergyReserve()
-                        {
-                            Amount = 0,
-                            Color = landCard.Color
-                        };
-                        player.EnergyReserve.Add(energyReserveCard);
-                    }
-                    energyReserveCard.Amount++;
-                    landCard.Use(generalBoard);
-            }
-            else
-            {
-                return false;
+                energyReserve.Amount -= CostToBePlayed;
+                return true;
             }
 
+
+
+            for (int i = 0; i < CostToBePlayed; i++)
+            {
+                var landCard = player.Board.Cards.FirstOrDefault(c => c is LandCard && c.Used == false);
+                if (landCard == null)
+                {
+                    Console.WriteLine($"Not enough energy in landcards and energy reserve");
+                }
+                generalBoard.UseLandEnergy(player, landCard.Color);
             }
-            return true;
+
+            return UseColourlessEnergy(player, generalBoard);
         }
     }
 }

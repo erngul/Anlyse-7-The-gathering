@@ -1,4 +1,11 @@
-﻿namespace The_gathering_v2.Models.TurnPhases;
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+
+using The_gathering_v2.Models.Cards;
+
+namespace The_gathering_v2.Models.TurnPhases;
 
 public class PreparationPhase  : IObserver<GeneralBoard>
 {
@@ -21,6 +28,19 @@ public class PreparationPhase  : IObserver<GeneralBoard>
         foreach (var C in value.Attacker.Board.Cards)
         {
             C.Reset();
+            if (C is ISpellCard ispellCard)
+            {
+                ispellCard.Effect.OnDestroy(value);
+            }
+        }
+
+        foreach (var C in value.Attacker.DiscardPile.Cards)
+        {
+            C.Reset();
+            if (C is ISpellCard ispellCard)
+            {
+                ispellCard.Effect.OnDestroy(value);
+            }
         }
     }
 }

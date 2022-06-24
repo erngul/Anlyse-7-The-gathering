@@ -1,4 +1,9 @@
-﻿using The_gathering_v2.Models.Cards;
+﻿/*
+Eren Gul 0993650
+Kaykhosrow Hasany 0998409
+*/
+
+using The_gathering_v2.Models.Cards;
 using The_gathering_v2.Models.TurnPhases;
 
 namespace The_gathering_v2.Models;
@@ -8,10 +13,7 @@ public class GeneralBoard : IObservable<GeneralBoard>, IDisposable
     public Player Attacker { get; set; }
     public Player Defender { get; set; }
     public bool GameOver = false;
-    public InterruptionStack InterruptionStack { get; set; } = new InterruptionStack()
-    {
-        Cards = new Stack<IEffect>()
-    };
+    public Stack<InterruptionStack> InterruptionStack { get; set; } = new Stack<InterruptionStack>();
     public List<IObserver<GeneralBoard>> Observers = new()
     {
         new PreparationPhase(),
@@ -91,7 +93,7 @@ public class GeneralBoard : IObservable<GeneralBoard>, IDisposable
             return;
         }
 
-        var energyReserve = player.EnergyReserve.FirstOrDefault(e => e.Color.Equals(color));
+        var energyReserve = player.EnergyReserve.FirstOrDefault(e => e.Color.Name == color.Name);
         if (energyReserve == null)
         {
             energyReserve = new EnergyReserve()
@@ -102,18 +104,19 @@ public class GeneralBoard : IObservable<GeneralBoard>, IDisposable
             player.EnergyReserve.Add(energyReserve);
         }
         energyReserve.Amount++;
-        land.Use(this);
+        land.Use(this, player);
+        Console.WriteLine($"Used {color.Name} landcard and added energy to {color.Name} energy reserve");
     }
 
-    public bool consumeEnergyForSpellCard(Player player, ISpellCard spellCard)
+    public bool ConsumeEnergyForSpellCard(Player player, ISpellCard spellCard)
     {
-        var energyReserve = player.EnergyReserve.FirstOrDefault(e => e.Color.Equals(spellCard.Color));
+        var energyReserve = player.EnergyReserve.FirstOrDefault(e => e.Color.Name == spellCard.Color.Name);
         if (energyReserve != null)
         {
             if (energyReserve.Amount >= spellCard.CostToBePlayed)
             {
                 energyReserve.Amount -= spellCard.CostToBePlayed;
-                Console.WriteLine($"{spellCard.CostToBePlayed} energy has been taken from the {spellCard.Color} energyReserve.");
+                Console.WriteLine($"{spellCard.CostToBePlayed} energy has been taken from the {spellCard.Color.Name} energyReserve.");
                 return true;
             }
         }
@@ -128,7 +131,7 @@ public class GeneralBoard : IObservable<GeneralBoard>, IDisposable
         {
             UseLandEnergy(player, spellCard.Color);
         }
-        return true;
+        return ConsumeEnergyForSpellCard(player, spellCard);
     }
     public void AddPermanentCardToBoard(int cardNumber)
     {
@@ -140,14 +143,14 @@ public class GeneralBoard : IObservable<GeneralBoard>, IDisposable
         }
     }
 
-    public void AddInstantaneousCardFromHandToInterruptionStack(int cardNumber)
+    public void AddInstantaneousCardFromHandToInterruptionStack(int cardNumber, Player player)
     {
         var instantaneousCard = Attacker.Hand.Cards[cardNumber];
         if (instantaneousCard is InstantaneousCard instant)
         {
-            if (consumeEnergyForSpellCard(Attacker, instant))
+            if (ConsumeEnergyForSpellCard(Attacker, instant))
             {
-                instant.Use(this);
+                instant.Use(this, player);
             }
         }
     }
@@ -157,9 +160,9 @@ public class GeneralBoard : IObservable<GeneralBoard>, IDisposable
         var permanent = Defender.Board.Cards[cardNumber];
         if (permanent is PermanentCard permanentCard)
         {
-            if (consumeEnergyForSpellCard(Attacker, permanentCard))
+            if (ConsumeEnergyForSpellCard(Attacker, permanentCard))
             {
-                permanentCard.Use(this);
+                permanentCard.Use(this, Attacker);
             }
         }
     }
